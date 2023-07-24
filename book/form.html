@@ -106,7 +106,7 @@
           <label for="room">Número de habitación</label>
         </div>
         <div class="col-75">
-          <input class="_req" type="text" id="room" name="room" placeholder="Número de habitación.">
+          <input class="" type="text" id="room" name="room" placeholder="Número de habitación.">
         </div>
       </div>
       <br><br>
@@ -119,7 +119,7 @@
           <label for="names">Nombres y apellidos</label>
         </div>
         <div class="col-75">
-          <input class="_req" type="text" id="names" name="names" placeholder="Nombres y apellidos.">
+          <input class="" type="text" id="names" name="names" placeholder="Nombres y apellidos.">
         </div>
       </div>
 
@@ -128,7 +128,7 @@
           <label for="country">País de procedencia</label>
         </div>
         <div class="col-75">
-          <input class="_req" type="text" id="country" name="country" placeholder="País de procedencia.">
+          <input class="" type="text" id="country" name="country" placeholder="País de procedencia.">
         </div>
       </div>
 
@@ -137,7 +137,7 @@
           <label for="phone">Número de teléfono / WhatsApp</label>
         </div>
         <div class="col-75">
-          <input class="_req" type="text" id="phone" name="phone" placeholder="WhatsApp.">
+          <input class="" type="text" id="phone" name="phone" placeholder="WhatsApp.">
         </div>
       </div>
 
@@ -146,7 +146,7 @@
           <label for="email">E-mail</label>
         </div>
         <div class="col-75">
-          <input class="_req _email" type="text" id="email" name="email" placeholder="E-mail.">
+          <input class="_email" type="text" id="email" name="email" placeholder="E-mail.">
         </div>
       </div>
 
@@ -172,7 +172,7 @@
 
         <fieldset>
           <div>
-            <input class="_req" type="radio" id="courier" name="courier" value="courier">
+            <input class="" type="radio" id="courier" name="courier" value="courier">
             <label for="courier">Наличные курьеру</label>
             <div>Оплата наличными батами нашему русскому курьеру, который подъедет к вам в отель для оформления экскурсии</div>
           </div>
@@ -180,14 +180,14 @@
           <hr>
 
           <div>
-            <input class="_req" type="radio" id="bank-card" name="bank-card" value="bank-card">
+            <input class="" type="radio" id="bank-card" name="bank-card" value="bank-card">
             <label for="bank-card">Полная оплата банковской картой</label>
           </div>
         </fieldset>
         <br><br>
 
         <div class="payment__agreement">
-          <input class="_req" type="checkbox" id="agreement" name="agreement" value="agreement" checked>
+          <input class="" type="checkbox" id="agreement" name="agreement" value="agreement" checked>
           <label for="agreement">
             Нажимая кнопку «Забронировать», Вы подтверждаете свое согласие с условиями отмены экскурсии и условиями конфиденциальности
           </label>
@@ -417,8 +417,8 @@
 
       let formData = new FormData(form);
 
-      if (error === 0) {
-        let response = await fetch('sendmail.php', {
+      if (!error) {
+        let response = await fetch('../sendmail.php', {
           method: 'POST',
           body: formData
         });
@@ -431,6 +431,7 @@
           alert('Ошибка');
         }
       } else {
+        console.log(error);
         alert('Заполните все обязательные поля');
       }
 
