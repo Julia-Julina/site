@@ -418,7 +418,7 @@
       let formData = new FormData(form);
 
       if (!error) {
-        let response = await fetch('../sendmail.php', {
+        let response = await fetch('./sendmail.php', {
           method: 'POST',
           body: formData
         });
